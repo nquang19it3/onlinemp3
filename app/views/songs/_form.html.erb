@@ -1,0 +1,51 @@
+<%= form_with(model: song) do |form| %>
+  <% if song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+      <ul>
+        <% song.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field mb-3">
+  <%= form.label :song_name, class:"form-label" %>
+  <%= form.text_field :song_name,class:"form-control" %>
+</div>
+<div class="field mb-3">
+  <%= form.label :song_image, class:"form-label" %>
+  <%= form.text_field :song_image,class:"form-control" %>
+</div>
+<div class="field mb-3">
+  <%= form.label :song_path, class:"form-label" %>
+  <%= form.text_field :song_path,class:"form-control" %>
+</div>
+<div class="field mb-3">
+  <%= form.label :image, class:"form-label" %>
+  <%= form.file_field :image,class:"form-control" %>
+</div>
+<div class="field mb-3">
+  <%= form.label :song, class:"form-label" %>
+  <%= form.file_field :song,class:"form-control" %>
+</div>
+<div class="field mb-3">
+  <%= form.label :artist_id, class:"form-label" %>
+  <%= form.collection_select :artist_id, Artist.all, :id, :artist_stagename, {}, :multiple => false, class:"form-select" %>
+</div>
+<div class="field mb-3">
+  <%= form.label :album_id, class:"form-label" %>
+  <%= form.collection_select :album_id, Album.all, :id, :album_name, {}, :multiple => false, class:"form-select"%>
+</div>
+<div class="field mb-3">
+  <%= form.label :genre_id, class:"form-label" %>
+  <%= form.collection_select :genre_id, Genre.all, :id, :genres_name, {}, :multiple => false, class:"form-select"%>
+</div>
+<div class="field mb-3">
+  <%= form.submit %>
+</div>
+
+<% end %>
+

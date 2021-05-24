@@ -1,0 +1,58 @@
+
+          <div class="col-12">
+        <p id="notice"><%= notice %></p>
+          <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Artist</th>
+              <th>Image</th>
+              <th>Song</th>
+              <th>Album</th>
+              <th colspan="3">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @songs.each do |song| %>
+              <tr>
+                <td style="max-width: 200px;"><%= song.song_name %></td>
+                <td><%= song.artist.artist_stagename %></td>
+                <td>
+                <figure style="width: 60px; height:60px;">
+                  <%= image_tag(song.thumbnail)%>
+                </figure>
+                </td>
+                <td>
+                  <%= link_to song.song.filename.to_s, song.song %>
+                </td>
+                
+                <td><%= song.album.album_name %></td>
+                <td style="width: 50px">
+                  <%= link_to song , class:"btn btn-outline-success" do %>
+                    <i class='bx bxs-show bx-rotate-180' ></i>
+                  <%end%>
+                </td>
+                <td style="width: 60px">
+                <%= link_to edit_song_path(song), class:"btn btn-outline-info" do%>
+                  <i class='bx bxs-edit bx-rotate-180' ></i>
+                <%end%>
+                </td>
+                <td style="width: 60px">
+                <%= link_to song, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class='bx bx-trash' ></i>
+                <%end%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>      
+        <br>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"> <%= will_paginate(@songs,:previous_label => "&laquo;", :next_label => "&raquo;",:class=>"",:outer_window => 1,:inner_window => 0) %></li>
+          </ul>
+        </nav>
+        <%= link_to 'New Song', new_song_path %>
+          </div>
+

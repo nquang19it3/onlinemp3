@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist_stagename: MyString
+  artist_realname: MyString
+  artist_image: MyString
+  artist_description: MyText
+  artist_birthday: 2021-05-14
+
+two:
+  artist_stagename: MyString
+  artist_realname: MyString
+  artist_image: MyString
+  artist_description: MyText
+  artist_birthday: 2021-05-14

@@ -1,0 +1,91 @@
+<div class="controls">
+              <div class="block hidden-on-mb--tab">
+                <div class="card">
+                    <div>
+                      <figure class="image-thumb--lg" title="">
+                        <%= image_tag("", :alt => "") %>
+                      </figure>
+                    </div>
+                    <div class="card-info">
+                      <%= content_tag(:h3, "" ,class:"title") %>
+                      <%= link_to ""%>
+                    </div>
+                </div>
+                <div class="group">
+                  <button type="button">
+                    <span><i class="far fa-heart"></i></span>
+                  </button>
+                  <button type="button">
+                    <span><i class="fas fa-ellipsis-h"></i></span>
+                  </button>
+                </div>
+              </div>
+              <div class="controls-bar">
+                <div class="items">
+                  <button class="item btn__loop" type="button">
+                    <figure>
+                      <%= image_tag("exchange.png", :alt => "", class:"icon") %>
+                    </figure>
+                  </button>
+                  <button class="item btn__prev" type="button">
+                    <figure>
+                      <%= image_tag("previous.png", :alt => "", class:"icon") %>
+                    </figure>
+                  </button>
+                  <button class="item is50 btn__play" type="button">
+                    <figure>
+                      <%= image_tag("play-button.png", :alt => "", class:"icon") %>
+                    </figure>
+                  <button class="item btn__next" type="button">
+                    <figure>
+                      <%= image_tag("next.png", :alt => "", class:"icon") %>
+                    </figure>
+                  </button>
+                  <button class="item btn__random" type="button">
+                    <figure>
+                      <%= image_tag("shuffle.png", :alt => "", class:"icon") %>
+                    </figure>
+                  </button>
+                </div>
+                <div class="slide">
+                  <p class="currentTime">00:00</p>
+                  <div class="ranger">
+                    <input
+                      class="slider"
+                      type="range"
+                      min="1"
+                      max="100"
+                      value="0"
+                    />
+                    <div class="slider-value"></div>
+                  </div>
+
+                  <p class="durationTime">00:00</p>
+                </div>
+              </div>
+              <div class="block hidden-on-mb--tab">
+                    <button type="button " class="btn__lyrics">
+                      <figure>
+                        <%= image_tag("karaoke.png", :alt => "", class:"icon") %>
+                      </figure>
+                    </button>
+                  <div class="control-volume">
+                    <button type="button " class="volume-icon">
+                      <figure>
+                        <%= image_tag("volume.png", :alt => "", class:"icon") %>
+                      </figure>
+                    </button>
+                    <div class="volume">
+                      <input
+                        type="range"
+                        name=""
+                        id="volume"
+                        min="0"
+                        max="100"
+                        value="100"
+                      />
+                      <div class="volume-value"></div>
+                    </div>
+                  </div>
+              </div>
+</div>

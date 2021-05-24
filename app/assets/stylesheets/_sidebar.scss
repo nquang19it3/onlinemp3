@@ -1,0 +1,98 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 240px;
+  background-color: var(--primaryBgColor);
+  margin-top: 60px;
+  overflow-y: auto;
+  z-index: 99999;
+  .items {
+    position: relative;
+    padding: 15px 0;
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      width: 93%;
+      height: 50px;
+      padding: 10px 30px;
+      .icon {
+        width: 40px;
+        color: var(--iconColor);
+        padding-left: 8px;
+        margin-right: 15px;
+        font-size: 18px;
+      }
+      .content {
+        p {
+          color: var(--textColor);
+          font-size: 15px;
+          font-weight: 500;
+        }
+        a {
+          color: var(--textColor);
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+      &:hover {
+        background-color: var(--itemHoverBgColor);
+      }
+    }
+    .active {
+      background-color: var(--itemActiveBgColor);
+      .icon {
+        color: var(--iconActiveColor);
+      }
+    }
+  }
+  .genres {
+    width: 93%;
+    padding-left: 30px;
+    margin-top: 10px;
+    .tags {
+      .tag {
+        padding: 5px;
+        display: inline-block;
+        border: 1px solid var(--borderColor);
+        border-radius: 10px;
+        font-size: 12px;
+        a {
+          color: var(--textDarkGray);
+          text-decoration: none;
+        }
+        &:nth-child(n + 5) {
+          margin-top: 10px;
+        }
+      }
+    }
+    .linkTo {
+      margin-top: 20px;
+      display: inline-block;
+      width: 100%;
+      padding: 8px 16px;
+      text-align: center;
+      background-color: var(--secondaryBgColor);
+      border: 1px solid var(--borderColor);
+      color: var(--textDarkGray);
+      text-decoration: none;
+      &:hover {
+        color: var(--primaryColor);
+      }
+    }
+  }
+  .footer {
+    position: absolute;
+    width: 90%;
+    bottom: 30px;
+    padding-left: 30px;
+    text-align: center;
+    p {
+      font-size: 14px;
+      color: var(--textDarkGray);
+      opacity: 0.6;
+    }
+  }
+}

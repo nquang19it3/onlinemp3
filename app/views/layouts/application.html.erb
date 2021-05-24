@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Musicplayer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <%# FontAwesome %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <%# Swiper Css %>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.css"
+      integrity="sha512-Yh4EqHPEJlOr5IFQ6EXPAA3RhwHgRBesEJLWJaz+xj1Bix5peuxOk40IA3gp7LH0BHJvi0e5QNL1iqvvLjdA9w=="
+      crossorigin="anonymous"
+    />
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "layouts/header" %>
+    <main class="main">
+        <!-- SIDEBAR LARGE -->
+        <input type="checkbox" name="toggleBtn" id="toggleBtn" hidden />
+        <%= render "layouts/sidebar" %>
+        <%= yield %>
+    </main>
+    <%= render "layouts/controls" %>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"
+    integrity="sha512-sAHYBRXSgMOV2axInO6rUzuKKM5SkItFLlLHQ8YjRD+FBwowtATOs4njP9oim3/MzyAGrB52SLDjpAOLcOT9TA=="
+    crossorigin="anonymous"
+    ></script>
+    <%= javascript_pack_tag 'autocomplete' %>
+    <%= javascript_pack_tag 'slider' %>
+    <%= javascript_pack_tag 'darkmode' %>
+    <%= javascript_pack_tag 'main' %>
+  </body>
+</html>

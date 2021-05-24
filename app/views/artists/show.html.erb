@@ -1,0 +1,110 @@
+<div class="body" style="padding-bottom: 90px;">
+<div class="about-artist">
+  <div class="artist-header">
+    <div class="blur" style="background-image: url(<%= url_for(@artist.image)%>)"></div>
+    <div class="container-m">
+    <div class="row header-body">
+    <div class="col-8">
+      <%= content_tag(:h2, @artist.artist_stagename) %>
+      <p>&#9998; Tên thật: <%= @artist.artist_realname %><p>
+      <p>&#9998; Ngày sinh: <%= @artist.artist_birthday.strftime("%d/%m/%Y") %><p>
+      <%= content_tag(:p, @artist.artist_description) %>
+    </div>
+    <div class="col-3">
+      <figure style="width: 260px; height: 260px">
+        <%= image_tag(@artist.image, style:"border-radius: 50%;")%>
+      </figure>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="artist-content">
+    <div>
+      <h3 class="title-large">Bài hát nổi bật</h3>
+      <div class="row " style="margin-top: 20px">
+        <div class="col-3">
+            <!-- Swiper -->
+            <div class="swiper-container cube-swiper">
+              <div class="swiper-wrapper">
+                <% @artist.songs.each do |song|%>
+                  <div class="swiper-slide" style="max-height: 260px">
+                    <%= image_tag(song.image) %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="col-9">
+          <ul class="playlist" >
+                      <% @artist.songs.limit(5).each_with_index do |song,index| %>
+                        <%= content_tag(:li, class:"item", data: {index: index}) do %>
+                          <div class="card">
+                            <figure class="image-thumb" title="">
+                              <%= image_tag(song.thumbnail, :alt => "")%>
+                            </figure>
+                            <div class="card-info">
+                              <%= content_tag(:h3, song.song_name, class: "title")%>
+                              <%= link_to song.artist.artist_stagename, song.artist.artist_stagename %>
+                            </div>
+                            <div
+                            class="sound-animate"
+                            >
+                          </div>
+                          </div>
+                          <div class="duration">
+                            <p></p>
+                          </div>
+                          <div class="levels">
+                            <button type="button" class="level-item">
+                              <figure>
+                                <%= image_tag("karaoke.png", class:"icon", :alt => "")%>
+                              </figure>
+                            </button>
+                            <button type="button" class="level-item">
+                              <figure>
+                                <%= image_tag("like.png", class:"icon", :alt => "")%>
+                              </figure>
+                            </button>
+                            <button type="button" class="level-item">
+                              <figure class="image-icon">
+                                <%= image_tag("more.png", class:"icon", :alt => "")%>
+                              </figure>
+                            </button>
+                          </div>
+                        <% end %>
+                      <%end%>
+            <%= audio_tag("" , autoplay: false, class: "audio", id:"audio", data: {data:  @song_data})%>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="related-albums" style= "position: relative;">
+      <h3 class="title-large">Albums</h3>
+          <div class="items" style="margin-top: 20px;">
+                <div class="swiper-related">
+                  <div class="swiper-wrapper">
+                    <% @artist.albums.each do |album|%>
+                      <div class="swiper-slide">
+                        <div class="item">
+                          <figure>
+                            <%= image_tag(album.image, :alt => album.album_name) %>
+                          </figure>
+                          <div class="content">
+                            <%= link_to album.album_name, album %>
+                          </div>
+                        </div>
+                      </div>
+                    <%end%>
+                  </div>
+                  <!-- Add Arrows -->
+                  <div class="swiper-controls" style="top: 0;">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+          </div>
+        </div>
+  </div>
+</div>
+</div>

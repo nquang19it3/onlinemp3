@@ -1,0 +1,72 @@
+<%= form_with(model: artist) do |form| %>
+  <% if artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+      <ul>
+        <% artist.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label class:"form-label" do%>
+      <span>
+        <i class='bx bxs-medal' ></i>
+          Stage Name
+      </span>
+    <%end%>
+    <%= form.text_field :artist_stagename, class:"form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label class:"form-label" do%>
+      <span>
+        <i class='bx bxs-user'></i>
+          Real Name
+      </span>
+    <%end%>
+    <%= form.text_field :artist_realname, class:"form-control"  %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label class:"form-label" do%>
+      <span>
+        <i class='bx bxs-image-add'></i>
+        Image
+      </span>
+    <%end%>
+    <%= form.file_field :image, class:"form-control"  %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label class:"form-label" do%>
+      <span>
+        <i class='bx bxs-book-alt'></i>
+          Description
+      </span>
+    <%end%>
+    <%= form.text_area :artist_description, class:"form-control", style:"height: 120px"  %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label class:"form-label" do%>
+      <span>
+        <i class='bx bxs-calendar'></i>
+          Birthday
+      </span>
+    <%end%>
+    <%= form.date_select :artist_birthday,:order => [:day, :month, :year], start_year:1990 ,class:"form-select"%>
+  </div>
+
+  <div class="field mb-3">
+      <%= form.label :genre_id, class:"form-label" %>
+      <%= form.collection_select :genre_id, Genre.all, :id, :genres_name, {}, :mutiple => false, class:"form-select"%>
+    </div>
+
+  <div class="actions">
+    <%= form.submit(class:'btn btn-dark') %>
+  </div>
+<% end %>

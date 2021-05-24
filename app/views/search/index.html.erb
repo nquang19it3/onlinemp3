@@ -1,0 +1,68 @@
+<div class="body" style="padding-top: 30px">
+  <div class="container-m">
+    <div class="rs-search">
+      <div class="rs rs-top">
+        <h1 class="title-large"> Top kết quả &#10077; <%= content_tag(:span, params[:search]) %> &#10078; </h1>
+        <ul>
+          <% if @top_result_song %>
+            <li>
+              <div class="item">
+                <figure>
+                  <%= image_tag( @top_result_song.thumbnail, :alt=> "")%>
+                </figure>
+                <div class="content">
+                  <%= link_to @top_result_song.song_name %>
+                    <%= link_to @top_result_song.artist.artist_stagename, @top_result_song.artist,
+                      style: "color: var(--textDarkGray) " %>
+                </div>
+                <%= link_to @top_result_song.song, class: "download" do %>
+                  <span><i class="fas fa-download"></i></span>
+                <% end %>
+              </div>
+            </li>
+            <% elsif @top_result_artist %>
+              <li>
+                <div class="item">
+                  <figure>
+                    <%= image_tag( @top_result_artist.image, :alt=> "")%>
+                  </figure>
+                  <div class="content">
+                    <%= content_tag(:p, @top_result_artist.artist_stagename )%>
+                      <%= content_tag(:p,"Nghệ sĩ" , class:"text-sm")%>
+                  </div>
+                </div>
+              </li>
+              <% else %>
+                <h2>No Result Found!</h2>
+                <% end %>
+        </ul>
+      </div>
+    <% if @top_result_song %>
+      <div class="rs-related">
+        <h1 class="title-large"> Kết quả có liên quan </h1>
+        <ul class="playlist">
+            <% @rs_related_song.each_with_index do |rs,index| %>
+              <%= content_tag(:li, class:"item") do %>
+                <div class="card">
+                  <figure class="image-thumb" title="">
+                    <%= image_tag(rs.thumbnail, :alt=> "")%>
+                  </figure>
+                  <div class="card-info">
+                    <%= content_tag(:h3, rs.song_name, class: "title" )%>
+                      <%= link_to rs.artist.artist_stagename, rs.artist %>
+                  </div>
+                  <div class="sound-animate">
+                  </div>
+                </div>
+                <div class="duration">
+                  <p></p>
+                </div>
+                <% end %>
+                  <% end %>   
+        </ul>
+      </div>
+      </div>
+      <%= audio_tag("" , autoplay: false, class: "audio" , id:"audio", data: {data:  @song_data })%>
+    <%end%>
+  </div>
+</div>

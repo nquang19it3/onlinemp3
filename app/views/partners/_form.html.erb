@@ -1,0 +1,32 @@
+<%= form_with(model: partner) do |form| %>
+  <% if partner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+      <ul>
+        <% partner.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :partner_name , class:"form-label"%>
+    <%= form.text_field :partner_name, class:"form-control" %>
+  </div>
+
+   <div class="field mb-3">
+    <%= form.label :image, class:"form-label" %>
+    <%= form.file_field :image, class:"form-control"%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :partner_description, class:"form-label"%>
+    <%= form.text_area :partner_description, class:"form-control"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

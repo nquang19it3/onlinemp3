@@ -1,0 +1,131 @@
+
+        <div class="body">
+          <div class="container-m" style="margin-bottom: 90px;">
+            <!-- Swiper -->
+            <div class="albums">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <% @albums.each do |album| %>
+                    <div class="swiper-slide">
+                      <%= link_to album do %>
+                        <div class="album">
+                          <div
+                            class="bg"
+                            style = "background-image: url(<%= rails_blob_path(album.image) %>)"
+                          ></div>
+                          <div class="count">
+                            <%= content_tag(:p) do %>
+                              <%= album.songs.count %> bài hát
+                            <% end %>
+                          </div>
+                          <div class="player">
+                            <button type="button">
+                              <span><i class="fas fa-play"></i></span>
+                            </button>
+                            <div style="width: 67%">
+                              <p class="title">
+                                <%= album.album_name %>
+                              </p>
+                              <p class="description">Update every friday</p>
+                            </div>
+                          </div>
+                          <div class="overlay-bg"></div>
+                        </div>
+                      <%end%>
+                    </div>
+                  <% end %>
+                </div>
+                <!-- Add Scrollbar -->
+                <div class="swiper-scrollbar"></div>
+              </div>
+            </div>
+
+            <div class="genres">
+              <div class="title-large">
+                <h3>Thể loại</h3>
+              </div>
+              <div class="items">
+                <div class="swiper-container--genres">
+                  <div class="swiper-wrapper">
+                    <% @genres.each do |genre|%>
+                      <div class="swiper-slide">
+                      <div class="item">
+                        <figure>
+                          <%= image_tag(genre.thumbnail, :alt => genre.genres_name) %>
+                        </figure>
+                        <div class="content">
+                          <%= link_to genre.genres_name, genre%>
+                        </div>
+                      </div>
+                    </div>
+                    <%end%>
+
+                  </div>
+                  <!-- Add Arrows -->
+                  <div class="swiper-controls">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="artists">
+              <div class="title-large">
+                <h3>Ca sĩ có hoạt động nổi bật</h3>
+              </div>
+              <div class="items">
+                <div class="swiper-container--artists">
+                  <div class="swiper-wrapper">
+                    <% @artists.each do |artist|%>
+                      <div class="swiper-slide">
+                      <div class="item">
+                        <figure>
+                          <%= image_tag(artist.image, :alt => artist.artist_stagename) %>
+                        </figure>
+                        <div class="content">
+                          <%= link_to artist.artist_stagename, artist%>
+                        </div>
+                      </div>
+                    </div>
+                    <%end%>
+
+                  </div>
+                  <!-- Add Arrows -->
+                  <div class="swiper-controls">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="partner">
+              <div class="title">
+                <h3>Đối tác âm nhạc</h3>
+              </div>
+              <div class="items">
+              <% @partners.each do |partner|%>
+                <div class="item">
+                  <figure>
+                    <%= image_tag(partner.image, :alt => partner.partner_name, :title => partner.partner_description) %>
+                  </figure>
+                </div>
+              <% end %>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <%# USER MENU %>
+        <input type="checkbox" name="toggle-user" id="toggle-user" hidden/>
+        <div class="menu">
+          <div class="menu-list"></div>
+          <div class="oval"></div>
+        </div>
+        <%# END USER MENU%>
+        <%= audio_tag("" , autoplay: false, class: "audio", id:"audio", data: {data: @song_data})%>
+
+
+

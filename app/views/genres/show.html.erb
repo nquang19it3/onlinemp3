@@ -1,0 +1,133 @@
+<div class="body">
+  <div class="">
+    <div class="about-genre">
+      <div class="genre-header">
+        <div class="bg" style="background-image: url(<%= url_for(@genre.image)%>)"></div>
+        <div class="overlay-bg"></div>
+      </div>
+      <div class="genres-content">
+        <div class="container-m">
+          <div class="top-songs">
+            <h3 class="title-large">Hot Songs</h3>
+            <div class="row" style="margin-top: 20px">
+              <div class="col-4">
+                <ul class="playlist">
+                  <% @hot_songs_col1.each_with_index do |song,index| %>
+                    <%= content_tag(:li, class:"item") do %>
+                      <div class="card">
+                        <figure class="image-thumb" title="">
+                          <%= image_tag(song.thumbnail, :alt=> "")%>
+                        </figure>
+                        <div class="card-info" style="width: 100%">
+                          <%= content_tag(:h3, song.song_name, class: "title" )%>
+                            <%= link_to song.artist.artist_stagename, song.artist %>
+                        </div>
+                        <div class="sound-animate"></div>
+                      </div>
+                      <% end %>
+                        <%end%>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul class="playlist">
+                  <% @hot_songs_col2.each_with_index do |song,index| %>
+                    <%= content_tag(:li, class:"item") do %>
+                      <div class="card">
+                        <figure class="image-thumb" title="">
+                          <%= image_tag(song.thumbnail, :alt=> "")%>
+                        </figure>
+                        <div class="card-info" style="width: 100%">
+                          <%= content_tag(:h3, song.song_name, class: "title" )%>
+                            <%= link_to song.artist.artist_stagename, song.artist %>
+                        </div>
+                        <div class="sound-animate"></div>
+                      </div>
+                      <% end %>
+                        <%end%>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul class="playlist">
+                  <% @hot_songs_col3.each_with_index do |song,index| %>
+                    <%= content_tag(:li, class:"item") do %>
+                      <div class="card">
+                        <figure class="image-thumb" title="">
+                          <%= image_tag(song.thumbnail, :alt=> "")%>
+                        </figure>
+                        <div class="card-info" style="width: 100%">
+                          <%= content_tag(:h3, song.song_name, class: "title" )%>
+                            <%= link_to song.artist.artist_stagename, song.artist %>
+                        </div>
+                        <div class="sound-animate"></div>
+                      </div>
+                    <% end %>
+                  <%end%>
+                </ul>
+              </div>
+            </div>
+            <%= audio_tag("" , autoplay: false, class: "audio" , id:"audio", data: {data: @songs_data})%>
+          </div>
+          <%# END TOP SONG %>
+            <div class="genre-albums">
+              <h3 class="title-large">Albums</h3>
+              <div class="items" style="margin-top: 20px;">
+                <div class="swiper-related">
+                  <div class="swiper-wrapper">
+                    <% @genre.albums.each do |album|%>
+                      <div class="swiper-slide">
+                        <div class="item">
+                          <figure>
+                            <%= image_tag(album.image, :alt=> album.album_name) %>
+                          </figure>
+                          <div class="content">
+                            <%= link_to album.album_name, album %>
+                          </div>
+                        </div>
+                      </div>
+                      <%end%>
+                  </div>
+                  <!-- Add Arrows -->
+                  <div class="swiper-controls" style="top: 0;">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%# END ALBUMS %>
+              <div class="genre-artists" style="margin-top: 30px; position: relative">
+                <h3 class="title-large">Nghệ sĩ</h3>
+                <div class="items" style="margin-top: 20px;">
+                  <div class="swiper-related">
+                    <div class="swiper-wrapper">
+                      <% @genre.artists.each do |artist|%>
+                        <div class="swiper-slide">
+                          <div class="item">
+                            <figure style="height: 175px;width: 175px;margin: auto;">
+                              <%= image_tag(artist.image, :alt=> artist.artist_stagename, class: "round") %>
+                            </figure>
+                            <div class="content" style="text-align: center;">
+                              <%= link_to artist.artist_stagename, artist %>
+                                <p class="text-sm">167k quan tâm</p>
+                                <button class="">
+                                  <span><i class="fas fa-user-plus"></i></span> quan tâm
+                                </button>
+                            </div>
+                          </div>
+                        </div>
+                        <%end%>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-controls" style="top: 0;">
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <%# END ARTISTS %>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
