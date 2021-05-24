@@ -4,6 +4,8 @@ Website Ruby on rails nghe nhạc trực tuyến "ONLINEMP3".
 
 CONTACT ME: dnq1310@gmail.com
 
+Scroll to the bottom of the page for installation instructions.
+
 DEMO:
 
 * HOME_PAGE
@@ -44,4 +46,10 @@ DATABASE SYSTEM:
 
 ![database2](https://user-images.githubusercontent.com/54609183/119318292-506ddb00-bca3-11eb-946c-7b1df68f5354.PNG)
 
+INSTALLATION INSTRUCTIONS:
+
++ Download the source code, unzip it.
++ Create database, import file .sql.
++ Edit file /config/database.yml change database name, database username and password.
++ Go to the admin page: "domainname/admin".
 
